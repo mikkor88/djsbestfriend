@@ -1,9 +1,10 @@
 ---
 logo_djbf.png: logo_djbf-67118e629f07e59ccd83730cf938a574.png
-application.js: application-515a482bdb7ca5ec9ac39513ad765f29.js
+application.js: application-db4a8ec4c82d4bcdf75e449587b3f7cc.js
 pages.js: pages-d6c03004c3644316b353c7381326118a.js
+sessions.js: sessions-d6c03004c3644316b353c7381326118a.js
 users.js: users-d6c03004c3644316b353c7381326118a.js
-application.css: application-de816ce681a022ee089952fedc364c12.css
+application.css: application-f17e7cc788753075424d986fc88bee76.css
 blueprint/ie.css: blueprint/ie-e74efa906a10b340155784d2bad8c799.css
 blueprint/plugins/buttons/icons/cross.png: blueprint/plugins/buttons/icons/cross-1f87fac86c438386527b5e7d5ceecb0e.png
 blueprint/plugins/buttons/icons/key.png: blueprint/plugins/buttons/icons/key-5f38d0204e83d3d83585a62ff993342b.png
@@ -34,8 +35,9 @@ blueprint/src/ie.css: blueprint/src/ie-e74efa906a10b340155784d2bad8c799.css
 blueprint/src/print.css: blueprint/src/print-e8a3c1d15481d968b45744b9dfdbb0af.css
 blueprint/src/reset.css: blueprint/src/reset-28fd532509fb89d88e795634caa33d02.css
 blueprint/src/typography.css: blueprint/src/typography-544b6bc564a0c5017811730d78a071d0.css
-custom.css: custom-933df91849c50789fbf3ea2c5be7e521.css
+custom.css: custom-1365a403147b6f96c24ef92c3288d62b.css
 pages.css: pages-1c9609bc58b1e77c196de29021583379.css
+sessions.css: sessions-1c9609bc58b1e77c196de29021583379.css
 users.css: users-1c9609bc58b1e77c196de29021583379.css
 jquery-ui.js: jquery-ui-1257779252765a9d537d315acc189907.js
 jquery-ui.min.js: jquery-ui.min-2b432ef5545e6620f94e7638b7574058.js
