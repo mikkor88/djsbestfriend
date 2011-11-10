@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111109193421) do
+ActiveRecord::Schema.define(:version => 20111110224542) do
+
+  create_table "releases", :force => true do |t|
+    t.string   "title"
+    t.string   "artist"
+    t.string   "genre"
+    t.string   "type"
+    t.integer  "year"
+    t.text     "comment"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "releases", ["id", "title"], :name => "index_releases_on_id_and_title"
+  add_index "releases", ["title", "catalog_number"], :name => "index_releases_on_title_and_catalog_number", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "name"
