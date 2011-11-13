@@ -6,6 +6,13 @@ Factory.define :user do |user|
   user.password_confirmation "foobar"
 end
 
+Factory.define :record do |record|
+  record.title              "Great Music"
+  record.artist             "Wonderful Artist"
+  record.record_type				"LP"
+  record.genre							"R&B"
+end
+
 Factory.sequence :email do |n|
 	"person-#{n}@example.com"
 end
