@@ -1,0 +1,9 @@
+<li>
+  <%= link_to record_index_item.artist + " - " + record_index_item.title, 
+																								 record_index_item %>
+  <% if current_user.admin? %>
+  | <%= link_to "delete", record_index_item, :method => :delete, 
+													:confirm => "You sure?",
+													:title => "Delete #{record_index_item.title}" %>
+  <% end %>
+</li>

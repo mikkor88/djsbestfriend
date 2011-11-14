@@ -3,19 +3,35 @@ require 'spec_helper'
 describe PagesController do
 	render_views
 	
-	describe "GET 'home'" do
+	 describe "GET 'home'" do
 	
-    it "should be successful" do
-			get 'home'
-			response.should be_success
-    end
+		describe "when not signed in" do
 		
-		it "should have the right title" do
-			get 'home'
-			response.should have_selector("title", 
-																		:content => "Home")
+			before(:each) do
+				get :home
+			end
+			
+			it "should be successful" do
+				response.should be_success
+			end
+			
+			it "should have the right title" do
+				response.should have_selector("title",
+																			:content => "Home")
+			end
 		end
-  end
+		
+		describe "when signed in" do
+		
+			before(:each) do
+				@user = test_sign_in(Factory(:user))
+			end
+			
+			it "should display the record index" do
+				# fill this in
+			end
+		end
+	end
 
   describe "GET 'contact'" do
 		

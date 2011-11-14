@@ -1,6 +1,16 @@
+<% if signed_in? %>
+  <table summary="For signed-in users">
+    <tr>
+      <td>
+        <%= render 'shared/record_index_items' %>
+      </td>
+    </tr>
+  </table>
+<% else %>
+
 <h1>DJ's Best Friend</h1>
 	<p>
 		This is the home page for the DJ's Best Friend application.
 	</p>
-	
-<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+	<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% end %>

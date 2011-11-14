@@ -1,0 +1,9 @@
+<h1>Add a record</h1>
+
+<%= form_for(@record) do |f| %>
+	<%= render 'shared/error_messages', :object => f.object %>
+	<%= render 'fields', :f => f %>
+  <div class="actions">
+    <%= f.submit "Add a record" %>
+  </div>
+<% end %>

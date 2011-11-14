@@ -1,0 +1,7 @@
+<%= link_to "Add new record", new_record_path %>
+<% unless @record_index_items.empty? %>
+  <table summary="Records">
+    <%= render :partial => 'shared/record_index_item', :collection => @record_index_items %>
+  </table>
+  <%= will_paginate @record_index_items %>
+<% end %>

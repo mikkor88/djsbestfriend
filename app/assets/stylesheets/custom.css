@@ -167,3 +167,9 @@ ul.users {
 .users li {
   list-style: none;
 }
+
+/*user and record edit pages*/
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
