@@ -3,5 +3,20 @@
 	<li><%= @record.artist %></li>
 	<li><%= @record.record_type %></li>
 </ul>
+<table>
+<% for track in @record.tracks %>
+		<tr>
+			<td>
+				<%=h track.track_number %>
+			</td>
+			<td>
+				<%=h track.title %>
+			</td>
+			<td>
+				<%=h track.bpm %>
+			</td>
+		</tr>
+<% end %>
+</table>
 
 <%= link_to "Edit record", edit_record_path(@record) %>

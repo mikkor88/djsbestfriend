@@ -1,12 +1,13 @@
 class RecordsController < ApplicationController
-  def new
+	
+	def new
 		@record = Record.new
-		@title = "Add a new record"
-  end
+	end
 
 	def show
 		@record = Record.find(params[:id])
 		@title = @record.artist + " - " + @record.title
+		@tracks = @record.tracks
 	end
 	
 	def edit
@@ -37,6 +38,18 @@ class RecordsController < ApplicationController
 		else
 			@title = "Edit record"
 			render 'edit'
+		end
+	end
+	
+	def destroy
+		if signed_in?
+			@record = Record.find(params[:id])
+			@record.destroy
+			flash[:success] = "Record destroyed."
+			redirect_to records_path
+		else
+			flash[:error] = "Please sign in to destroy a record."
+			redirect_to signin_path
 		end
 	end
 end

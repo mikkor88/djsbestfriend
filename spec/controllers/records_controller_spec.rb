@@ -93,4 +93,88 @@ describe RecordsController do
       response.should have_selector("title", :content => "Edit record")
     end
   end
+	
+	describe "PUT 'update'" do
+
+    before(:each) do
+      @record = Factory(:record)
+    end
+
+    describe "failure" do
+
+      before(:each) do
+        @attr = { :title => "", :artist => "", :genre => "",
+                  :type => "" }
+      end
+
+      it "should render the 'edit' page" do
+        put :update, :id => @record, :record => @attr
+        response.should render_template('edit')
+      end
+
+      it "should have the right title" do
+        put :update, :id => @record, :record => @attr
+        response.should have_selector("title", :content => "Edit record")
+      end
+    end
+
+    describe "success" do
+
+      before(:each) do
+        @attr = { :title => "New Record", :artist => "Awesome Band",
+                  :genre => "Funk", :type => "7\"" }
+      end
+
+      it "should change the record's attributes" do
+        put :update, :id => @record, :record => @attr
+        @record.reload
+        @record.title.should  == @attr[:title]
+        @record.artist.should == @attr[:artist]
+      end
+
+      it "should redirect to the record show page" do
+        put :update, :id => @record, :record => @attr
+        response.should redirect_to(record_path(@record))
+      end
+
+      it "should have a flash message" do
+        put :update, :id => @record, :record => @attr
+        flash[:success].should =~ /Record updated./
+      end
+    end
+  end
+	
+	describe "DELETE 'destroy'" do
+
+    before(:each) do
+      @record = Factory(:record)
+			@user = Factory(:user)
+    end
+
+		describe "as a non-signed-in user" do
+      it "should deny access" do
+        delete :destroy, :id => @record
+        response.should redirect_to(signin_path)
+      end
+    end
+
+    describe "as an admin user" do
+
+      before(:each) do
+        @admin = Factory(:user, :email => "admin@example.com", :admin => true)
+        test_sign_in(@admin)
+      end
+
+      it "should destroy the record" do
+        lambda do
+          delete :destroy, :id => @record
+        end.should change(Record, :count).by(-1)
+      end
+
+      it "should redirect to the records page" do
+        delete :destroy, :id => @record
+        response.should redirect_to(records_path)
+      end
+    end
+  end
 end

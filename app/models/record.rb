@@ -1,6 +1,8 @@
 class Record < ActiveRecord::Base
-	attr_accessible :title, :artist, :genre, :record_type, :year, :comment, :catalog_number
-	
+	attr_accessible :title, :artist, :genre, :record_type, :year, :comment, :catalog_number, :tracks_attributes
+	has_many :tracks, :dependent => :destroy
+	accepts_nested_attributes_for :tracks
+		
 	validates :title, :presence => true, :uniqueness => { :scope => :catalog_number }
 	validates :artist, :presence => true
 	validates :genre, :presence => true

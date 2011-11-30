@@ -1,9 +1,14 @@
 <h1>Add a record</h1>
 
-<%= form_for(@record) do |f| %>
+<%= semantic_form_for(@record) do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
 	<%= render 'fields', :f => f %>
-  <div class="actions">
-    <%= f.submit "Add a record" %>
-  </div>
+	<h3>Tracks</h3>
+	<%= f.semantic_fields_for :tracks do |track| %>
+		<%= render 'track_fields', :f => track %>
+	<% end %>
+	<%= link_to_add_association 'Add a track', f, :tracks %>
+	<%= f.buttons do %>
+    <%= f.submit "Update" %>
+  <% end %>
 <% end %>

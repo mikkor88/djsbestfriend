@@ -8,6 +8,8 @@ gem 'rails', '3.1.1'
 gem 'pg'
 gem 'will_paginate', '3.0'
 gem 'acts_as_list'
+gem 'formtastic'
+gem 'cocoon'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
