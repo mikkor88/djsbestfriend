@@ -10,5 +10,5 @@ class Record < ActiveRecord::Base
 																			:in => ["12\"", "7\"", "10\"", "LP", "2xLP", "3xLP", "4xLP",
 																							"Box"],
 																			:message => "Select a valid type for your record." }
-
+	
 end

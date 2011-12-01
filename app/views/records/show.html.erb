@@ -1,21 +1,42 @@
-<h1><%= @record.title %></h1>
-<ul>
-	<li><%= @record.artist %></li>
-	<li><%= @record.record_type %></li>
-</ul>
-<table>
+<h3><%= @record.artist + " - " + @record.title %></h3>
+<table id="record">
+	<tr>
+		<td class="col1">Year</td>
+		<td>
+			<%= @record.year.strftime("%Y") unless @record.year.nil? %>
+		</td>
+  </tr>
+	<tr>
+		<td class="col1">Type</td>
+		<td>
+			<%= @record.record_type %>
+		</td>
+  </tr>
+</table>
+<% unless @record.tracks.empty? %>
+<table id="tracks">
+	<tr>
+    <th>Track no</th>
+    <th>Title</th>
+		<th>Duration</th>
+		<th>BPM</th>
+  </tr>
 <% for track in @record.tracks %>
 		<tr>
-			<td>
+			<td class="track_no">
 				<%=h track.track_number %>
 			</td>
-			<td>
+			<td class="track_title">
 				<%=h track.title %>
 			</td>
-			<td>
+			<td class="duration">
+				<%=h track.duration.strftime("%M:%S") unless track.duration.nil? %>
+			</td>
+			<td class="bpm">
 				<%=h track.bpm %>
 			</td>
 		</tr>
+<% end %>
 <% end %>
 </table>
 

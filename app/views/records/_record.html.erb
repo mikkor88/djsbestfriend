@@ -1,7 +1,20 @@
-<li>
-  <%= link_to record.title, record %>
-  <% if current_user.admin? %>
-  | <%= link_to "delete", record, :method => :delete, :confirm => "You sure?",
-                                :title => "Delete #{record.title}" %>
-  <% end %>
-</li>
+<tr>
+		<td class="artist">
+		  <%= record.artist %>
+		</td>
+		<td class="title">
+			 <%= link_to record.title, record %>
+		</td>
+		<td class="year">
+			<%= record.year.strftime("%Y") unless record.year.nil? %>
+		</td>
+		<td class="type">
+			<%= record.record_type %>
+		</td>
+		<td><% if current_user.admin? %>
+		<%= link_to "delete", record, :method => :delete, 
+													:confirm => "You sure?",
+													:title => "Delete #{record.title}" %>
+		<% end %>
+		</td>
+</tr>

@@ -2,8 +2,19 @@
 
 <%= will_paginate %>
 
-<ul class="records">
-  <%= render @records %>
-</ul>
+<% unless @records.empty? %>
+  <table index="records_index">
+    <tr>
+			<th>Artist</th>
+			<th>Title</th>
+			<th>Year</th>
+			<th>Type</th>
+			<% if current_user.admin? %>
+				<th>Delete?</th>
+			<% end %>
+		</tr>
+		<%= render @records %>
+	</table>
+<% end %>
 
 <%= will_paginate %>

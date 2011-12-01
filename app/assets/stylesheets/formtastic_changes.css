@@ -1,0 +1,34 @@
+.formtastic,
+.formtastic ul,
+.formtastic ol,
+.formtastic li,
+.formtastic fieldset,
+.formtastic legend,
+.formtastic input,
+.formtastic textarea,
+.formtastic select,
+.formtastic p {
+ 	font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+/* STRING, NUMERIC, PASSWORD, EMAIL, URL, PHONE, SEARCH (ETC) OVERRIDES
+--------------------------------------------------------------------------------------------------*/
+.formtastic .stringish input {
+  width:40%;
+}
+
+.formtastic .stringish input[size] {
+  width:auto;
+  max-width:40%;
+}
+
+/* TEXTAREA OVERRIDES
+--------------------------------------------------------------------------------------------------*/
+.formtastic .text textarea {
+  width:50%;
+}
+
+.formtastic .text textarea[cols] {
+  width:auto;
+  max-width:50%;
+}

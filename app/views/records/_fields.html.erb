@@ -2,8 +2,10 @@
 	<%= f.input :title %>
 	<%= f.input :artist %>
 	<%= f.input :genre %>
-	<%= f.input :record_type %>
-	<%= f.input :year %>
+	<%= f.input :record_type, :as => :select, :collection => ["12\"", "7\"", "10\"", 
+																														"LP", "2xLP", "3xLP", "4xLP", "Box"], :include_blank => false %>  
+	<%= f.input :year, :as => :date,		 :discard_day => true, :discard_month => true, :start_year => Time.now.year,
+																			 :end_year => Time.now.year-70, :include_blank => false  %>
 	<%= f.input :catalog_number %>
-	<%= f.input :comment %>
+	<%= f.input :comment, :input_html => { :class => 'comment' } %>
 <% end %>

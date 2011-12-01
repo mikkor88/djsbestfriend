@@ -1,6 +1,7 @@
 <header>  
 	<%= link_to logo, root_path %>
-    <ul>
+  <nav class="round">  
+		<ul>
       <li><%= link_to "Home", root_path %></li>
       <% if signed_in? %>
 			<li><%= link_to "Users", users_path %></li>
@@ -14,4 +15,5 @@
       <li><%= link_to "Sign in", signin_path %></li>
       <% end %>
     </ul>
+	</nav>
 </header>

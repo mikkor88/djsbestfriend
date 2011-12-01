@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111124182812) do
+ActiveRecord::Schema.define(:version => 20111201210034) do
 
   create_table "records", :force => true do |t|
     t.string   "title"
     t.string   "artist"
     t.string   "genre"
     t.string   "record_type"
-    t.integer  "year"
     t.text     "comment"
     t.string   "catalog_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "year"
   end
 
   add_index "records", ["id", "title"], :name => "index_records_on_id_and_title"

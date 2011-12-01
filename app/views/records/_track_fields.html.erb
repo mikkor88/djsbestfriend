@@ -1,8 +1,9 @@
-<div class="nested-fields" >
+<div>
 <%= f.inputs do %>
-	<%= f.input :track_number %>
+	<%= f.input :track_number, :as => :select, :collection => 1..25 %>
 	<%= f.input :title %>
-	<%= f.input :bpm %>
+	<%= f.input :duration, :as => :time,  :label => "Duration (min(s), sec(s))", :include_seconds => true, :discard_hour => true %>
+	<%= f.input :bpm, :as => :select, :collection => 65..160 %>
 	<%= link_to_remove_association "Remove track", f %>
 <% end %>
 </div>
