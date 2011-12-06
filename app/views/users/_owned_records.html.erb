@@ -1,0 +1,14 @@
+<% unless @records.empty? %>
+<h2>Collection</h2>
+  <table index="records">
+    <tr>
+			<th>Artist</th>
+			<th>Title</th>
+			<th>Year</th>
+			<th>Type</th>
+			<th>Delete from collection</th>
+		</tr>
+		<%= render @records %>
+  </table>
+  <%= will_paginate @records %>
+<% end %>

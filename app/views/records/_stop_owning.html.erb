@@ -1,0 +1,4 @@
+<%= form_for current_user.reverse_ownership_relationships.find_by_owned_record_id(@record),
+             :html => { :method => :delete } do |f| %>
+  <div class="actions"><%= f.submit "Remove from collection" %></div>
+<% end %>

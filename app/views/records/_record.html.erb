@@ -11,10 +11,7 @@
 		<td class="type">
 			<%= record.record_type %>
 		</td>
-		<td><% if current_user.admin? %>
-		<%= link_to "delete", record, :method => :delete, 
-													:confirm => "You sure?",
-													:title => "Delete #{record.title}" %>
-		<% end %>
+		<td>
+		<%= render 'records/own_form' %>
 		</td>
 </tr>

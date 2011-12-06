@@ -2,6 +2,11 @@ class Record < ActiveRecord::Base
 	attr_accessible :title, :artist, :genre, :record_type, :year, :comment, :catalog_number, :tracks_attributes
 	has_many :tracks, :dependent => :destroy
 	accepts_nested_attributes_for :tracks
+	
+	has_many :ownership_relationships, :foreign_key => "owned_record_id",
+													 :dependent => :destroy
+	
+	has_many :owners, :through => :ownership_relationships, :source => "owner"
 		
 	validates :title, :presence => true, :uniqueness => { :scope => :catalog_number }
 	validates :artist, :presence => true
@@ -10,5 +15,15 @@ class Record < ActiveRecord::Base
 																			:in => ["12\"", "7\"", "10\"", "LP", "2xLP", "3xLP", "4xLP",
 																							"Box"],
 																			:message => "Select a valid type for your record." }
+	def owning?(owned_record)
+		ownership_relationships.find_by_owned_record_id(owned_record)
+	end
 	
+	def own!(owned_record)
+		ownership_relationships.create!(:owned_record_id => owned_record.id)
+	end
+	
+	def stop_owning!(owned_record)
+		ownership_relationships.find_by_owned_record_id(owned_record).destroy
+	end
 end

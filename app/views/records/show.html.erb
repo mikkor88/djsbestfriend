@@ -12,6 +12,11 @@
 			<%= @record.record_type %>
 		</td>
   </tr>
+	<tr>
+		<td>
+			<%= render 'own_form' %>
+		</td>
+	</tr>
 </table>
 <% unless @record.tracks.empty? %>
 <table id="tracks">

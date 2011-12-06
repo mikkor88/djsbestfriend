@@ -1,0 +1,5 @@
+<%= form_for current_user.reverse_ownership_relationships.
+                          build(:owned_record_id => @record.id) do |f| %>
+  <div><%= f.hidden_field :owned_record_id %></div>
+  <div class="actions"><%= f.submit "Add to collection" %></div>
+<% end %>

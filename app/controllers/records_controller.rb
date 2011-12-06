@@ -8,6 +8,7 @@ class RecordsController < ApplicationController
 		@record = Record.find(params[:id])
 		@title = @record.artist + " - " + @record.title
 		@tracks = @record.tracks
+		@owners = @record.owners
 	end
 	
 	def edit

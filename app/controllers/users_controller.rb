@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 	def show
     @user = User.find(params[:id])
 		@title = @user.name
+		@records = @user.owned_records.paginate(:page => params[:page])
   end
 
   def create

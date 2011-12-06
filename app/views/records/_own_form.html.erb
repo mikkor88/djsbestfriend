@@ -1,0 +1,9 @@
+ <% unless current_user == @user || @record.nil? %>
+	 <div id="own_form">
+  <% if current_user.owning?(@record) %>
+    <%= render 'records/stop_owning' %>
+  <% else %>
+    <%= render 'records/own' %>
+  <% end %>
+  </div>
+<% end %>

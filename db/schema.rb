@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111201210034) do
+ActiveRecord::Schema.define(:version => 20111206140523) do
+
+  create_table "ownership_relationships", :force => true do |t|
+    t.integer  "owner_id"
+    t.integer  "owned_record_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ownership_relationships", ["owned_record_id"], :name => "index_ownership_relationships_on_owned_record_id"
+  add_index "ownership_relationships", ["owner_id"], :name => "index_ownership_relationships_on_owner_id"
 
   create_table "records", :force => true do |t|
     t.string   "title"

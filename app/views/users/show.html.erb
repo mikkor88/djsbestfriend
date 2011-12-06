@@ -1,3 +1,7 @@
 <h1>
   <%= @user.name %>
 </h1>
+<p>User owns
+<%= pluralize(@user.owned_records.count, "record") %>.
+</p>
+<%= render 'owned_records' %>

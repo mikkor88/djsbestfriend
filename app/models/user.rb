@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
 	attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
 	
+	has_many :reverse_ownership_relationships, :foreign_key => "owner_id",
+                                   :class_name => "OwnershipRelationship",
+                                   :dependent => :destroy
+	has_many :owned_records, :through => :reverse_ownership_relationships, :source => "owned_record"
+	
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   validates :name, :presence => true,
@@ -30,6 +35,18 @@ class User < ActiveRecord::Base
                        :length       => { :within => 6..40 }
 					   
   before_save :encrypt_password
+	
+	def owning?(owned_record)
+		reverse_ownership_relationships.find_by_owned_record_id(owned_record)
+	end
+	
+	def own!(owned_record)
+		reverse_ownership_relationships.create!(:owned_record_id => owned_record.id)
+	end
+	
+	def stop_owning!(owned_record)
+		reverse_ownership_relationships.find_by_owned_record_id(owned_record).destroy
+	end
   
   # return true if the user's password matches the submitted password
   def has_password?(submitted_password)
