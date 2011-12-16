@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206140523) do
+ActiveRecord::Schema.define(:version => 20111215185156) do
 
   create_table "ownership_relationships", :force => true do |t|
     t.integer  "owner_id"
@@ -22,6 +22,28 @@ ActiveRecord::Schema.define(:version => 20111206140523) do
 
   add_index "ownership_relationships", ["owned_record_id"], :name => "index_ownership_relationships_on_owned_record_id"
   add_index "ownership_relationships", ["owner_id"], :name => "index_ownership_relationships_on_owner_id"
+
+  create_table "playlist_relationships", :force => true do |t|
+    t.integer  "playlist_id"
+    t.integer  "playlist_track_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "playlist_relationships", ["playlist_id", "playlist_track_id"], :name => "pls_relationships_index_on_pls_id_and_pls_track_id", :unique => true
+  add_index "playlist_relationships", ["playlist_id"], :name => "index_playlist_relationships_on_playlist_id"
+  add_index "playlist_relationships", ["playlist_track_id"], :name => "index_playlist_relationships_on_playlist_track_id"
+
+  create_table "playlists", :force => true do |t|
+    t.string   "title"
+    t.string   "grouping"
+    t.text     "description"
+    t.time     "duration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "year"
+  end
 
   create_table "records", :force => true do |t|
     t.string   "title"

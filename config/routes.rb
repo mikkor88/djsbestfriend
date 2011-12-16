@@ -13,8 +13,20 @@ Djsbestfriend::Application.routes.draw do
 		end
 	end
 	
-	resources :tracks
+	resources :playlists do
+		member do
+			get :playlist_tracks
+		end
+	end
+	
+	resources :tracks do
+		member do
+			get :playlists
+		end
+	end
+	
 	resources :ownership_relationships, :only => [:create, :destroy]
+	resources :playlist_relationships, :only => [:create, :destroy]
 	
 	match '/signup',  :to => 'users#new'
   match '/signin', :to => 'sessions#new'

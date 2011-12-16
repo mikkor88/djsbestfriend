@@ -25,6 +25,7 @@
     <th>Title</th>
 		<th>Duration</th>
 		<th>BPM</th>
+		<th>Add to/remove from playlists</th> 
   </tr>
 <% for track in @record.tracks %>
 		<tr>
@@ -39,6 +40,12 @@
 			</td>
 			<td class="bpm">
 				<%=h track.bpm %>
+			</td>
+			<td>
+			<%= semantic_form_for track do |f| %>
+				<%= f.input :playlists, :label => false %>
+				<%= f.buttons %>
+			<% end %>
 			</td>
 		</tr>
 <% end %>

@@ -1,0 +1,17 @@
+<h1>All playlists</h1>
+
+<%= will_paginate %>
+
+<% unless @playlists.empty? %>
+  <table index="records_index">
+    <tr>
+			<th>Title</th>
+			<th>Duration</th>
+			<th>Grouping</th>
+			<th>Year</th>
+		</tr>
+		<%= render @playlists %>
+	</table>
+<% end %>
+
+<%= will_paginate %>

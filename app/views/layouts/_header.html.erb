@@ -16,4 +16,14 @@
       <% end %>
     </ul>
 	</nav>
+	<% if signed_in? %>
+	<nav class="round">
+		<ul>
+			<li><%= link_to "Add new record", new_record_path %></li>
+			<li><%= link_to "Add new playlist", new_playlist_path %></li>
+			<li><%= link_to "List all records", records_path %></li>
+			<li><%= link_to "List all playlists", playlists_path %></li>
+		</ul>
+	</nav>
+	<% end %>
 </header>

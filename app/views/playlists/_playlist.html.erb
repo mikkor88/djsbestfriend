@@ -1,0 +1,11 @@
+<tr>
+		<td class="title">
+		  <%= link_to playlist.title, playlist %>
+		</td>
+		<td class="year">
+			<%= playlist.year.strftime("%Y") unless playlist.year.nil? %>
+		</td>
+		<td>
+			<%= playlist.grouping %>
+		</td>
+</tr>

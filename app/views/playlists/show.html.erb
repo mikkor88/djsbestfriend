@@ -1,0 +1,49 @@
+<h2><%= @playlist.title %></h2>
+<table id="record">
+	<tr>
+		<td class="col1">Duration</td>
+		<td>
+			<%= @playlist.duration %>
+		</td>
+  </tr>
+	<tr>
+		<td class="col1">Grouping</td>
+		<td>
+			<%= @playlist.grouping %>
+		</td>
+  </tr>
+	<tr>
+		<td class="col1">Year</td>
+		<td>
+			<%= @playlist.year.strftime("%Y") unless @playlist.year.nil? %>
+		</td>
+  </tr>
+</table>
+<% unless @playlist.playlist_tracks.empty? %>
+<table id="tracks">
+	<tr>
+    <th>Track no</th>
+    <th>Title</th>
+		<th>Duration</th>
+		<th>BPM</th>
+  </tr>
+<% for playlist_track in @playlist.playlist_tracks %>
+		<tr>
+			<td class="track_no">
+				<%=h playlist_track.track_number %>
+			</td>
+			<td class="track_title">
+				<%=h playlist_track.title %>
+			</td>
+			<td class="duration">
+				<%=h playlist_track.duration.strftime("%M:%S") unless playlist_track.duration.nil? %>
+			</td>
+			<td class="bpm">
+				<%=h playlist_track.bpm %>
+			</td>
+		</tr>
+<% end %>
+<% end %>
+</table>
+
+<%= link_to "Edit playlist", edit_playlist_path(@playlist) %>

@@ -4,6 +4,7 @@
 	<%= f.input :title %>
 	<%= f.input :duration, :as => :time,  :label => "Duration (min(s), sec(s))", :include_seconds => true, :discard_hour => true %>
 	<%= f.input :bpm, :as => :select, :collection => 65..160 %>
+	<%= f.input :playlists %>
 	<%= link_to_remove_association "Remove track", f %>
 <% end %>
 </div>

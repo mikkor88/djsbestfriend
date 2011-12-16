@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 	has_many :reverse_ownership_relationships, :foreign_key => "owner_id",
                                    :class_name => "OwnershipRelationship",
                                    :dependent => :destroy
-	has_many :owned_records, :through => :reverse_ownership_relationships, :source => "owned_record"
+	has_many :owned_records, :through => :reverse_ownership_relationships
 	
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   

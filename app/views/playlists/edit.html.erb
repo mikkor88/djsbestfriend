@@ -1,0 +1,9 @@
+<h1>Edit playlist</h1>
+
+<%= semantic_form_for(@playlist) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+	<%= render 'fields', :f => f %>
+	<%= f.buttons do %>
+    <%= f.submit "Update" %>
+  <% end %>
+<% end %>

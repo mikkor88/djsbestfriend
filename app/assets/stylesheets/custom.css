@@ -178,7 +178,7 @@ padding:3px 3px 3px 5px;
 }
 
 #tracks {
-	width:500px;
+	width:600px;
 	border-collapse:collapse;
 }
 
@@ -193,7 +193,7 @@ padding:3px 3px 3px 5px;
 }
 
 .track_title {
-	width:60%;
+	width:55%;
 }
 
 .duration {
